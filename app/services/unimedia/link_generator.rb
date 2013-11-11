@@ -1,6 +1,7 @@
 class Unimedia::LinkGenerator
   MAIN_URL = 'www.unimedia.info'
   PERMALINK_REGEX = /permalink-(?<id>\d+)/
+  DEFAULT_ID = 100
 
   def fetch
     page = RestClient.get(MAIN_URL)
@@ -14,7 +15,7 @@ class Unimedia::LinkGenerator
       @last_id ||= Link.where(source: :unimedia)
                        .last
                        .url
-                       .match(PERMALINK_REGEX)[:id].to_i
+                       .match(PERMALINK_REGEX)[:id].to_i rescue DEFAULT_ID
     end
 
     def populate_links(from, to)

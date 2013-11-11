@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.0.0'
-gem 'sqlite3'
+gem 'pg'
 gem 'sass-rails', '~> 4.0.0'
 
 gem 'uglifier', '>= 1.3.0'
@@ -13,5 +13,10 @@ gem 'nokogiri'
 
 group :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', require: false
+  gem 'database_cleaner'
+end
+
+group :development, :test do
+  gem 'debugger'
 end
