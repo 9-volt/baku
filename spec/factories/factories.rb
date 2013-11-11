@@ -6,5 +6,6 @@ FactoryGirl.define do
     source    :unimedia
     parsed_at Time.now
     success   false
+    attempted false
   end
 end
