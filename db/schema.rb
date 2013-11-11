@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20131027193608) do
     t.string   "url"
     t.string   "source"
     t.datetime "parsed_at"
+    t.boolean  "attempted"
     t.boolean  "success"
     t.datetime "created_at"
     t.datetime "updated_at"

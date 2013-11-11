@@ -4,6 +4,7 @@ class CreateLinks < ActiveRecord::Migration
       t.string :url
       t.string :source, index: true
       t.datetime :parsed_at
+      t.boolean :attempted
       t.boolean :success
 
       t.timestamps
