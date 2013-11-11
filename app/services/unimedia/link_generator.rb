@@ -16,7 +16,7 @@ class Unimedia::LinkGenerator
                        .match(PERMALINK_REGEX)[:id]
     end
 
-    def populeate_links(from, to)
+    def populate_links(from, to)
       from.upto(to) do |permalink_id|
         logger.info("Creating Unimedia link for #{permalink_id}")
         Link.create!(source: :unimedia, url: unimedia_url(permalink_id))
