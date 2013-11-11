@@ -1,8 +1,9 @@
 class Unimedia::LinkGenerator
-  PERMALINK_REGEX = //
+  MAIN_URL = 'www.unimedia.info'
+  PERMALINK_REGEX = /permalink-(?<id>\d+)/
 
   def fetch
-    page = RestApi.get(Unimedia::MAIN_URL)
+    page = RestClient.get(MAIN_URL)
     current_id = find_current_id(page)
     populate_links(last_id, current_id)
   end
@@ -13,7 +14,7 @@ class Unimedia::LinkGenerator
       @last_id ||= Link.where(source: :unimedia)
                        .last
                        .url
-                       .match(PERMALINK_REGEX)[:id]
+                       .match(PERMALINK_REGEX)[:id].to_i
     end
 
     def populate_links(from, to)
@@ -24,12 +25,17 @@ class Unimedia::LinkGenerator
     end
 
     def find_current_id(page)
-      doc = Nokogiri::HTML.new(page)
-      39
+      doc = Nokogiri::HTML(page)
+      doc.css('a.bigtitle').first   # this is a Nokogiri href
+         .attributes["href"].value  # ok, we got the permalink URL
+         .match(/\d+/)[0].to_i      # ae, obtain something like 45678
     end
 
     def unimedia_url(id)
-      "www.unimedia.info/articles/permalink_#{id}"
+      "www.unimedia.info/stiri/permalink-#{id}"
     end
 
+    def logger
+      Rails.logger
+    end
 end
