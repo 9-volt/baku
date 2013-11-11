@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Unimedia::PageFetcher do
-  let!(:link)        { FactoryGirl.create(:link, source: :unimedia) }
+  let!(:link) { FactoryGirl.create(:link, source: :unimedia) }
 
   subject { Unimedia::PageFetcher.new(link.id) }
 
@@ -16,6 +16,7 @@ describe Unimedia::PageFetcher do
       Page.count.should == 1
       Page.last.link.should == link
       Page.last.content.should == page_content
+
       link.reload.attempted.should == true
       link.reload.success.should == true
     end
@@ -26,6 +27,7 @@ describe Unimedia::PageFetcher do
     it 'does not save the page' do
       subject.fetch!
       Page.count.should == 0
+
       link.reload.attempted.should == true
       link.success.should == false
     end
