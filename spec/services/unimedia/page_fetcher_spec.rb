@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Unimedia::PageFetcher do
-  let!(:link) { FactoryGirl.create(:link, source: :unimedia) }
+  let!(:link) { FactoryGirl.create(:link, news_source: :unimedia) }
 
-  subject { Unimedia::PageFetcher.new(link.id) }
+  subject { Unimedia::PageFetcher.new(link) }
 
   before do
     RestClient.stub(:get).with(link.url).and_return(page_content)

@@ -9,7 +9,7 @@ describe Unimedia::LinkGenerator do
   end
 
   context 'when there are some links in the database' do
-    let!(:latest_link)  { FactoryGirl.create(:link, source: :unimedia) }
+    let!(:latest_link)  { FactoryGirl.create(:link, news_source: :unimedia) }
 
     it 'stores the links in the database' do
       expect { subject.fetch }.to change { Link.all.count }.by(4)

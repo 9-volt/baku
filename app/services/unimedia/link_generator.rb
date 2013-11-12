@@ -11,7 +11,7 @@ class Unimedia::LinkGenerator
   private
 
     def last_id
-      @last_id ||= Link.where(source: :unimedia)
+      @last_id ||= Link.where(news_source: :unimedia)
                        .last
                        .url
                        .match(PERMALINK_REGEX)[:id].to_i rescue default_id
@@ -20,7 +20,7 @@ class Unimedia::LinkGenerator
     def populate_links(from, to)
       from.upto(to) do |permalink_id|
         logger.info("Creating Unimedia link for #{permalink_id}")
-        Link.create!(source: :unimedia, url: unimedia_url(permalink_id))
+        Link.create!(news_source: :unimedia, url: unimedia_url(permalink_id))
       end
     end
 

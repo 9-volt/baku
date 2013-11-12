@@ -5,7 +5,7 @@ class Link < ActiveRecord::Base
   scope :successful,       -> { where(success: true) }
 
   def self.by_source
-    group(:source).count
+    group(:news_source).count
   end
 
   def self.one_unparsed
