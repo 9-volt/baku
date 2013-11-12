@@ -19,7 +19,7 @@ class Unimedia::LinkGenerator
 
     def populate_links(from, to)
       from.upto(to) do |permalink_id|
-        logger.info("Creating Unimedia link for #{permalink_id}")
+        logger.warn("Creating Unimedia link for #{permalink_id}")
         Link.create!(source: :unimedia, url: unimedia_url(permalink_id))
       end
     end
