@@ -18,3 +18,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+set :output, "#{Rails.root}/log/whenever.log"
+
+every 1.day, at: '1:30' do
+  runner "LinkUpdater.perform_async"
+end
