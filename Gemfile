@@ -13,6 +13,7 @@ gem 'nokogiri'
 gem 'sidekiq'
 gem 'devise'
 gem 'whenever', require: false
+gem 'haml-rails'
 
 group :test do
   gem 'rspec-rails'
