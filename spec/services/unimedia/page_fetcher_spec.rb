@@ -17,8 +17,9 @@ describe Unimedia::PageFetcher do
       Page.last.link.should == link
       Page.last.content.should == page_content
 
-      link.reload.attempted.should == true
-      link.reload.success.should == true
+      link.reload.attempted.should  == true
+      link.reload.success.should    == true
+      link.reload.parsed_at.should_not be_nil
     end
   end
 

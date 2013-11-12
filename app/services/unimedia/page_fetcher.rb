@@ -13,6 +13,7 @@ class Unimedia::PageFetcher
     if valid? page_data
       Page.create!(link: link, content: page_data)
       link.update_attributes!(success: true)
+      link.update_attributes!(parsed_at: Time.now)
     else
       link.update_attributes!(success: false)
     end
