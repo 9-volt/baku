@@ -7,4 +7,8 @@ class Link < ActiveRecord::Base
   def self.by_source
     group(:source).count
   end
+
+  def self.one_unparsed
+    where(attempted: false).limit(1)
+  end
 end
