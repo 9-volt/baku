@@ -15,6 +15,8 @@ gem 'devise'
 gem 'whenever', require: false
 gem 'haml-rails'
 
+gem 'capistrano'
+
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', require: false
