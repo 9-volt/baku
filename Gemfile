@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'rest-client'
 gem 'nokogiri'
+gem 'sidekiq'
 
 group :test do
   gem 'rspec-rails'
