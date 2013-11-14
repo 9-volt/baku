@@ -14,7 +14,7 @@ gem 'sidekiq'
 gem 'devise'
 gem 'whenever', require: false
 gem 'haml-rails'
-
+gem 'backbone-rails'
 gem 'capistrano'
 
 group :test do
