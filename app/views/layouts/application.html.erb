@@ -2,12 +2,22 @@
 <html>
 <head>
   <title>Baku</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div class="nav">
+    <ul>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Articles</a></li>
+      <li><a href="#">Users</a></li>
+      <li><a href="#">Pages</a></li>
+    </ul>
+  </div>
+<div class="content">
+    <%= yield %>
+</div>
 
 </body>
 </html>

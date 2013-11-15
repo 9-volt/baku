@@ -16,6 +16,8 @@ gem 'whenever', require: false
 gem 'haml-rails'
 gem 'capistrano'
 
+gem 'neat'
+
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', require: false

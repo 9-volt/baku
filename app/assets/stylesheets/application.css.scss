@@ -11,3 +11,39 @@
  *= require_self
  *= require_tree .
  */
+@import "bourbon";
+@import "neat";
+
+$main-color: #53AEE0;
+$hover-color: #5AC5FF;
+$link-color: #FFF;
+$nav-height: 40px;
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  text-shadow: 0px 1px 1px #222;
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+.nav {
+  font-family: $helvetica;
+  background-color: $main-color;
+  border-radius: 5px;
+  height: $nav-height;
+  line-height: $nav-height;
+
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      padding: 0 10px;
+    }
+  }
+}
+
+.content {
+  @include outer-container;
+}
