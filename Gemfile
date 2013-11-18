@@ -10,12 +10,20 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'rest-client'
 gem 'nokogiri'
+gem 'sinatra', require: false
+gem 'slim'
 gem 'sidekiq'
 gem 'devise'
 gem 'whenever', require: false
 gem 'haml-rails'
+gem 'redis'
 
-gem 'capistrano'
+gem 'unicorn',            require: false
+gem 'sidekiq-client-cli', require: false
+
+group :development do
+  gem 'capistrano', '~> 2.15', require: false
+end
 
 group :test do
   gem 'rspec-rails'
