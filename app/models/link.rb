@@ -3,6 +3,7 @@ class Link < ActiveRecord::Base
 
   scope :recently_updated, -> { where('updated_at > ?', 1.day.ago) }
   scope :successful,       -> { where(success: true) }
+  scope :from_source,      -> (news_source) { where(news_source: news_source) }
 
   def self.by_source
     group(:news_source).count
