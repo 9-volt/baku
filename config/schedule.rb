@@ -28,5 +28,5 @@ every 1.day, at: '1:30' do
 end
 
 every 1.minute do
-  20.times { sidekiq "push PagesFetcher" }
+  runner "PagesFetcher.parse_a_bunch"
 end
