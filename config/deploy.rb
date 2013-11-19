@@ -1,6 +1,7 @@
 require "rvm/capistrano"
 require 'bundler/capistrano'
 require 'capistrano-unicorn'
+require 'sidekiq/capistrano'
 
 server "146.185.181.83", :app, :web, :db, :primary => true
 
@@ -13,9 +14,12 @@ set :branch, "master"
 set :user, "volt"
 set :use_sudo, false
 
-set :rails_env, :production
+set :rails_env, "production"
 set :deploy_via, :copy
 set :keep_releases, 3
+
+set :stages, ["staging", "production"]
+set :default_stage, "production"
 
 set :rvm_ruby_string, :local
 set :rvm_autolibs_flag, "read-only"
