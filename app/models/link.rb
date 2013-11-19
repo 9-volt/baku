@@ -11,6 +11,6 @@ class Link < ActiveRecord::Base
   end
 
   def self.one_unparsed
-    where(attempted: false).limit(1).first
+    where(attempted: false).limit(100).sample
   end
 end
