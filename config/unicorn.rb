@@ -5,7 +5,7 @@ preload_app true
 timeout 180
 listen "127.0.0.1:8080"
 
-user 'minivan', 'staff'
+user 'volt', 'staff'
 
 working_directory "#{app_path}/current"
 

@@ -18,13 +18,15 @@ RAILS_ROOT = File.dirname(__FILE__) + '/..'
 #   runner "AnotherModel.prune_old_records"
 # end
 
+
+job_type :sidekiq,  "cd :path && RAILS_ENV=:environment bundle exec sidekiq-client :task :output"
 # Learn more: http://github.com/javan/whenever
 set :output, "#{RAILS_ROOT}/log/whenever.log"
 
 every 1.day, at: '1:30' do
-  runner "LinksUpdater.perform_async"
+  sidekiq "push LinksUpdater"
 end
 
 every 1.minute do
-  runner "PagesFetcher.perform_async"
+  sidekiq "push PagesFetcher"
 end
