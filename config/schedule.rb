@@ -22,5 +22,5 @@ RAILS_ROOT = File.dirname(__FILE__) + '/..'
 set :output, "#{RAILS_ROOT}/log/whenever.log"
 
 every 1.day, at: '1:30' do
-  runner "LinkUpdater.perform_async"
+  runner "LinksUpdater.perform_async"
 end
