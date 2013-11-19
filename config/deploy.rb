@@ -2,7 +2,6 @@ require "rvm/capistrano"
 require 'bundler/capistrano'
 require 'capistrano-unicorn'
 require 'sidekiq/capistrano'
-require 'deploy/assets'
 
 server "146.185.181.83", :app, :web, :db, :primary => true
 
