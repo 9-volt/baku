@@ -34,7 +34,7 @@ class Unimedia::LinkGenerator
     end
 
     def unimedia_url(id)
-      "http://www.unimedia.info/stiri/permalink-#{id}"
+      "http://www.unimedia.info/stiri/permalink-#{id}.html"
     end
 
     def logger
