@@ -1,6 +1,8 @@
 require "rvm/capistrano"
 require 'bundler/capistrano'
 require 'capistrano-unicorn'
+
+set :sidekiq_processes, 1
 require 'sidekiq/capistrano'
 
 set :whenever_command, "bundle exec whenever"
