@@ -12,7 +12,6 @@ set :deploy_to,   "/home/volt/baku"
 set :scm, :git
 set :branch, "master"
 set :user, "volt"
-set :use_sudo, false
 
 set :rails_env, "production"
 set :deploy_via, :copy
