@@ -10,6 +10,6 @@ class Link < ActiveRecord::Base
   end
 
   def self.one_unparsed
-    where(attempted: false).limit(1)
+    where(attempted: false).limit(1).first
   end
 end
