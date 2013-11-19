@@ -26,6 +26,7 @@ set :rvm_autolibs_flag, "read-only"
 
 before 'deploy:setup', 'rvm:install_rvm'
 before 'deploy:setup', 'rvm:install_ruby'
+before "deploy:assets:precompile", "bundle:install"
 
 after "deploy", "deploy:cleanup" # keep only the last 3 releases
 
