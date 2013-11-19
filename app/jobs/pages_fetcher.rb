@@ -3,7 +3,7 @@ class PagesFetcher
 
   def perform
     link = Link.one_unparsed
-    if link.source == :unimedia
+    if link.news_source == "unimedia"
       Unimedia::PageFetcher.new(link).fetch!
     end
   end
