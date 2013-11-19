@@ -25,6 +25,6 @@ every 1.day, at: '1:30' do
   runner "LinksUpdater.perform_async"
 end
 
-every 5.seconds do
+every 1.minute do
   runner "PagesFetcher.perform_async"
 end
