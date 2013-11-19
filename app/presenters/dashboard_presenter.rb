@@ -1,5 +1,5 @@
 class DashboardPresenter
-  attr_reader :users, :updated_unimedia
+  attr_reader :users, :updated_unimedia, :attempted_unimedia
 
   def initialize
     @users = User.all
