@@ -3,6 +3,10 @@ require 'bundler/capistrano'
 require 'capistrano-unicorn'
 require 'sidekiq/capistrano'
 
+set :whenever_environment, defer { stage }
+set :whenever_command, "bundle exec whenever"
+require 'whenever/capistrano'
+
 server "146.185.181.83", :app, :web, :db, :primary => true
 
 set :application, "Baku"
