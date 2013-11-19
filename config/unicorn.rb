@@ -13,7 +13,7 @@ user 'volt', 'deployers'
 working_directory app_path
 
 # Should be 'production' by default, otherwise use other env
-rails_env = ENV['RAILS_ENV'] || 'production'
+rails_env = 'production'
 
 # Log everything to one file
 stderr_path "log/unicorn.log"
