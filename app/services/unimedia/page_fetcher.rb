@@ -23,7 +23,7 @@ class Unimedia::PageFetcher
   end
 private
   def valid?(page_data)
-    /Ne pare rău, pagina nu a fost găsită./ !~ page_data
+    /ne pare .+ nu a fost/i !~ page_data
   end
 
   def logger
