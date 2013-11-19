@@ -9,10 +9,10 @@ class PagesFetcher
   end
 
   def self.parse_a_bunch
-    per_minute = 20
+    per_minute = 60
 
     per_minute.times do |i|
-      perform_at(Time.now + (60/per_minute).seconds)
+      perform_in(i.seconds)
     end
   end
 end
