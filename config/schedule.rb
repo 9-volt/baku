@@ -28,5 +28,5 @@ every 1.day, at: '1:30' do
 end
 
 every 1.minute do
-  5.times { sidekiq "push PagesFetcher" }
+  20.times { sidekiq "push PagesFetcher" }
 end
