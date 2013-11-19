@@ -1,26 +1,20 @@
-app_path = "/home/volt/baku/current"
+app_path = "/home/volt/baku"
 
-# Set unicorn options
-worker_processes 1
+worker_processes 2
 preload_app true
 timeout 180
 listen "127.0.0.1:8080"
 
-# Spawn unicorn master worker for user apps (group: apps)
 user 'volt', 'deployers'
 
-# Fill path to your app
-working_directory app_path
+working_directory "#{app_path}/current"
 
-# Should be 'production' by default, otherwise use other env
 rails_env = 'production'
 
-# Log everything to one file
-stderr_path "log/unicorn.log"
-stdout_path "log/unicorn.log"
+stderr_path "#{app_path}/shared/log/unicorn.log"
+stdout_path "#{app_path}/shared/log/unicorn.log"
 
-# Set master PID location
-pid "#{app_path}/tmp/pids/unicorn.pid"
+pid "#{app_path}/current/tmp/pids/unicorn.pid"
 
 before_fork do |server, worker|
   ActiveRecord::Base.connection.disconnect!
