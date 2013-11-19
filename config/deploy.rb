@@ -9,7 +9,7 @@ require 'whenever/capistrano'
 server "146.185.181.83", :app, :web, :db, :primary => true
 
 set :application, "Baku"
-set :repository,  "git@bitbucket.org:minivan/baku.git"
+set :repository,  "git@bitbucket.org:9-volt/baku.git"
 set :deploy_to,   "/home/volt/baku"
 
 set :scm, :git
