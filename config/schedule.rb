@@ -24,3 +24,7 @@ set :output, "#{RAILS_ROOT}/log/whenever.log"
 every 1.day, at: '1:30' do
   runner "LinksUpdater.perform_async"
 end
+
+every 1.minutes do
+  runner "PagesFetcher.perform_async"
+end
