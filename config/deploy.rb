@@ -1,12 +1,6 @@
-require 'bundler/capistrano'
-require 'sidekiq/capistrano'
-
-set :whenever_command, "bundle exec whenever"
-require 'whenever/capistrano'
-
 set :application, "Baku"
 set :repository,  "git@github.com:9-volt/baku.git"
-set :deploy_to, "/home/volt/baku"
+set :deploy_to,   "/home/volt/baku"
 
 set :scm, :git
 set :branch, "master"
