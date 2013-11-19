@@ -1,5 +1,6 @@
 require "rvm/capistrano"
 require 'bundler/capistrano'
+require 'capistrano-unicorn'
 
 server "146.185.181.83", :app, :web, :db, :primary => true
 
@@ -23,6 +24,10 @@ before 'deploy:setup', 'rvm:install_rvm'
 before 'deploy:setup', 'rvm:install_ruby'
 
 after "deploy", "deploy:cleanup" # keep only the last 3 releases
+
+after 'deploy:restart', 'unicorn:reload'
+after 'deploy:restart', 'unicorn:restart'
+after 'deploy:restart', 'unicorn:duplicate'
 
 namespace :deploy do
   desc "Make sure local git is in sync with remote."

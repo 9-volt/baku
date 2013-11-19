@@ -23,6 +23,7 @@ gem 'sidekiq-client-cli', require: false
 
 group :development do
   gem 'capistrano', '~> 2.15', require: false
+  gem 'capistrano-unicorn', :require => false
 end
 
 group :test do
