@@ -12,7 +12,7 @@ class PagesFetcher
     per_minute = 60
 
     per_minute.times do |i|
-      perform_in(i.seconds)
+      perform_in(i.seconds * 2)
     end
   end
 end
