@@ -27,6 +27,6 @@ every 1.day, at: '1:30' do
   sidekiq "push LinksUpdater"
 end
 
-every 2.minutes do
+every 1.minutes do
   runner "PagesFetcher.parse_a_bunch"
 end
