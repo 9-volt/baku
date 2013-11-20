@@ -1,0 +1,90 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+@import "bourbon";
+@import "neat";
+
+$main-color: #53AEE0;
+$hover-color: #5AC5FF;
+$link-color: #FFF;
+$nav-height: 40px;
+
+body {
+  font-family: $helvetica;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  text-shadow: 0px 1px 1px #222;
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+.nav {
+  font-family: $helvetica;
+  background-color: $main-color;
+  border-radius: 5px;
+  height: $nav-height;
+  line-height: $nav-height;
+
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      padding: 0 10px;
+    }
+  }
+}
+
+.content {
+  @include outer-container;
+  padding-top: 10px;
+
+  section {
+    @include span-columns(4);
+    @include omega(3n);
+    box-shadow: 0 0 4px #ccc;
+    border: 1px solid #ccc;
+
+    &:hover {
+      box-shadow: inset 0 0 2px #ccc, 0 0 4px #ccc;
+    }
+
+    h1 {
+      padding: 0 10px 10px;
+      border-bottom: 1px solid #ccc;
+      text-transform: uppercase;
+      font-weight: 200;
+      font-size: 12pt;
+      text-align: left;
+    }
+
+    h2 {
+      line-height: 42pt;
+      padding: 10px;
+
+      .big-number {
+      float: right;
+        font-weight: 100;
+        font-size: 42pt;
+      }
+
+      .description {
+      float: right;
+        font-weight: 400;
+      }
+    }
+  }
+}

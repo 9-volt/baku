@@ -1,1 +1,16 @@
-Something! #{@presenter.users.count}
+%section
+  %h1 Site statistics
+  %h2
+    .description
+      users
+    .graph
+    .big-number
+      =@presenter.users.count
+%section
+  %h1 Unimedia
+  %h2
+    .description
+      links updated today
+    .graph
+    .big-number
+      =@presenter.updated_unimedia
