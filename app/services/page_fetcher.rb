@@ -2,7 +2,7 @@ class PageFetcher
   attr_reader :link
 
   def initialize(link)
-    logger.info "Starting to parse #{link.url}"
+    logger.info "Starting to fetch #{link.url}"
     @link = link
   end
 
