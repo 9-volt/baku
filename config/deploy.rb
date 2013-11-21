@@ -1,6 +1,8 @@
 require "rvm/capistrano"
 require 'bundler/capistrano'
 require 'capistrano-unicorn'
+
+set :sidekiq_processes, 1
 require 'sidekiq/capistrano'
 
 set :whenever_command, "bundle exec whenever"
@@ -9,7 +11,7 @@ require 'whenever/capistrano'
 server "146.185.181.83", :app, :web, :db, :primary => true
 
 set :application, "Baku"
-set :repository,  "git@github.com:9-volt/baku.git"
+set :repository,  "git@bitbucket.org:9-volt/baku.git"
 set :deploy_to,   "/home/volt/baku"
 
 set :scm, :git
