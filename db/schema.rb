@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112202044) do
+ActiveRecord::Schema.define(version: 20131118113629) do
 
   create_table "links", force: true do |t|
     t.string   "url",                         null: false
     t.string   "news_source"
-    t.datetime "parsed_at"
+    t.datetime "fetched_at"
     t.boolean  "attempted",   default: false
     t.boolean  "success",     default: false
     t.datetime "created_at"

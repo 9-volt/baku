@@ -7,4 +7,12 @@ class PagesFetcher
       Unimedia::PageFetcher.new(link).fetch!
     end
   end
+
+  def self.parse_a_bunch
+    per_minute = 6
+
+    per_minute.times do |i|
+      perform_in(i.seconds * (60/per_minute))
+    end
+  end
 end

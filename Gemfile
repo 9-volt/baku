@@ -17,6 +17,7 @@ gem 'devise'
 gem 'whenever', require: false
 gem 'haml-rails'
 gem 'redis'
+gem 'koala'
 
 gem 'unicorn',            require: false
 gem 'sidekiq-client-cli', require: false
