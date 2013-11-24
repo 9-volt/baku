@@ -1,7 +1,7 @@
 class Parser
   attr_reader :doc
-  def initialize html
-    @doc = Nokogiri::HTML(html)
+  def initialize page
+    @doc = Nokogiri::HTML(page.content)
   end
 
   def parse
