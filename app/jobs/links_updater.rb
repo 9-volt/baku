@@ -2,8 +2,10 @@ class LinksUpdater
   include Sidekiq::Worker
 
   def perform
-    @count_before = Link.where(news_source: "unimedia").count
-    Unimedia::LinkGenerator.new.fetch
+    @count_before = Link.count
+    [Jurnal, Unimedia, Protv, Publika, Timpul].each do |source|
+      source::LinkGenerator.new.fetch
+    end
     notify
   end
 
