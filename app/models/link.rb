@@ -13,4 +13,9 @@ class Link < ActiveRecord::Base
   def self.one_unparsed
     where(attempted: false).limit(100).sample
   end
+
+  def download!
+    fetcher = self.news_source.to_s.camelize.constantize::PageFetcher
+    fetcher.new(self).fetch!
+  end
 end
