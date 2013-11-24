@@ -5,8 +5,6 @@ class ParserFactory
     def get_parser page
       link = page.link
 
-      puts link.news_source
-
       if link.news_source.to_sym == :protv
         url = expand link.url
 
@@ -29,8 +27,6 @@ class ParserFactory
   private
 
     def load source, page
-      puts source
-      puts page.link.url
       begin
         source.to_s.camelize.constantize::Parser.new(page)
       rescue Exception => e
