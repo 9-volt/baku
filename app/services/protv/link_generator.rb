@@ -5,9 +5,8 @@ class Protv::LinkGenerator < FbGraphLinkGenerator
     'protvchisinau'
   end
 
-  def extract_url hash
-    logger.info "extract url from #{hash['message']}"
-    URI.extract(hash["message"]).first
+  def source
+    :protv
   end
 
   def valid? link

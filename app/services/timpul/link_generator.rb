@@ -5,13 +5,8 @@ class Timpul::LinkGenerator < FbGraphLinkGenerator
     'Timpul.md'
   end
 
-  def extract_url hash
-    logger.info "extract url from #{hash['message']}"
-    begin
-      URI.extract(hash["message"]).first || hash["link"]
-    rescue
-      hash["link"]
-    end
+  def source
+    :timpul
   end
 
   def valid? link

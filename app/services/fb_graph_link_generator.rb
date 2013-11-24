@@ -14,6 +14,10 @@ class FbGraphLinkGenerator
     raise ArgumentError.new "you need to define that in subclass"
   end
 
+  def source
+    raise ArgumentError.new "you need to define that in subclass"
+  end
+
   def fetch
     process get_page
   end
@@ -22,8 +26,13 @@ class FbGraphLinkGenerator
     true
   end
 
-  def extract_url post_hash
-    post_hash["link"]
+  def extract_url hash
+    logger.info "extract url from #{hash['message']}"
+    begin
+      URI.extract(hash["message"]).first || hash["link"]
+    rescue
+      hash["link"]
+    end
   end
 
 private
@@ -45,13 +54,13 @@ private
     logger.info "valid links #{links}"
 
     if links.any?
-      existing = Link.where('news_source = ? and url in (?)', :protv, links).count
+      existing = Link.where('news_source = ? and url in (?)', source, links).count
     else
       existing = 0
     end
 
     links.each do |l|
-      link = Link.where(:news_source => :protv, :url => l).first_or_create!
+      link = Link.where(:news_source => source, :url => l).first_or_create!
       logger.info "saved link #{link.inspect}"
     end
 

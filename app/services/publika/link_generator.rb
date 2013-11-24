@@ -5,13 +5,8 @@ class Publika::LinkGenerator < FbGraphLinkGenerator
     'Publika.md'
   end
 
-  def extract_url hash
-    logger.info "extract url from #{hash['message']}"
-    begin
-      URI.extract(hash["message"]).first || hash["link"]
-    rescue
-      hash["link"]
-    end
+  def source
+    :publika
   end
 
   def valid? link
