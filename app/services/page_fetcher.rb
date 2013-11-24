@@ -16,9 +16,11 @@ class PageFetcher
 
     if valid? page_data
       logger.info "Page data valid, saving page"
-      Page.create!(link: link, content: page_data)
+      page = link.build_page(content: page_data)
+      page.save!
       link.update_attributes!(success: true)
       link.update_attributes!(fetched_at: Time.now)
+      page
     else
       logger.info "Page data invalid, cannot saving page"
       link.update_attributes!(success: false)
