@@ -39,8 +39,8 @@ private
   end
 
   def process page
-    results = page.map {|e| extract_url(e)}
-    links = results.select {|l| valid? l}.compact
+    results = page.map {|e| extract_url(e)}.compact
+    links = results.select {|l| valid? l}
     logger.info "results #{results}"
     logger.info "valid links #{links}"
 
