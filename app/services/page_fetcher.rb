@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class PageFetcher
   attr_reader :link
 
@@ -11,12 +13,21 @@ class PageFetcher
   end
 
   def fetch!
-    page_data = RestClient.get(link.url)
     link.update_attributes!(attempted: true)
 
-    if valid? page_data
+    open(link.url) do |resp|
+      origin = resp.base_uri.to_s
+      data = resp.read
+      process origin, data
+    end
+  end
+
+private
+
+  def process origin, data
+    if valid? data
       logger.info "Page data valid, saving page"
-      page = link.build_page(content: page_data)
+      page = link.build_page(content: data, origin: origin)
       page.save!
       link.update_attributes!(success: true)
       link.update_attributes!(fetched_at: Time.now)
@@ -26,8 +37,6 @@ class PageFetcher
       link.update_attributes!(success: false)
     end
   end
-
-private
 
   def logger
     Rails.logger
