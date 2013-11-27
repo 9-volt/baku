@@ -18,17 +18,17 @@ class ParserFactory
           source = :protv
         end
 
-        load source, page
+        load source, page, url
       else
-        load link.news_source, page
+        load link.news_source, page, link.url
       end
     end
 
   private
 
-    def load source, page
+    def load source, page, url
       begin
-        source.to_s.camelize.constantize::Parser.new(page)
+        source.to_s.camelize.constantize::Parser.new(page, url)
       rescue Exception => e
         puts "could not load parser for #{source} because #{e}"
       end

@@ -1,6 +1,7 @@
 class Parser
-  attr_reader :doc
-  def initialize page
+  attr_reader :doc, :url
+  def initialize page, url
+    @url = url
     @doc = Nokogiri::HTML(page.content)
   end
 
