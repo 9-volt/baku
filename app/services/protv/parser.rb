@@ -15,8 +15,4 @@ class Protv::Parser < Parser
     doc.css('.articleContent p').children.map(&:text).map {|s| s.split(/[\.!?]/)}
     .flatten.map(&:strip).select {|s| s.size > 1 }
   end
-
-  def parse_title
-    doc.css('title').text
-  end
 end

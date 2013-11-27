@@ -15,9 +15,19 @@ class Parser
     }
   end
 
-  [:author, :category, :time, :title, :sentences].each do |data|
+  def parse_title
+    doc.css('title').text
+  end
+
+  [:author, :category, :time, :sentences].each do |data|
     define_method "parse_#{data}" do
       raise ArgumentError.new "you need to define parse_#{data} in subclass"
     end
+  end
+
+private
+
+  def extract_sentences text
+    text.split(/[\.!?]/).map(&:squish).select {|s| s.size > 1}
   end
 end
